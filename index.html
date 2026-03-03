@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Dokumen</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 350px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2a5298;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #2a5298;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2a5298;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+#error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.toggle {
+    text-align: right;
+    font-size: 12px;
+    cursor: pointer;
+    color: #2a5298;
+    margin-top: 5px;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="loginBox">
+    <h2>Portal Dokumen</h2>
+
+    <div class="input-group">
+        <input type="text" id="username" placeholder="Username">
+    </div>
+
+    <div class="input-group">
+        <input type="password" id="password" placeholder="Password" id="passInput">
+        <div class="toggle" onclick="togglePassword()">Lihat Password</div>
+    </div>
+
+    <button onclick="login()">Login</button>
+    <p id="error"></p>
+</div>
+
+<script>
+function login() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    var box = document.getElementById("loginBox");
+
+    if (user === "admin" && pass === "spald2026") {
+        window.location.href = "GANTI_DENGAN_LINK_ONEDRIVE_KAMU";
+    } else {
+        document.getElementById("error").innerText = "Username atau Password salah!";
+        box.classList.add("shake");
+        setTimeout(() => box.classList.remove("shake"), 400);
+    }
+}
+
+function togglePassword() {
+    var passField = document.getElementById("password");
+    if (passField.type === "password") {
+        passField.type = "text";
+    } else {
+        passField.type = "password";
+    }
+}
+</script>
+
+</body>
+</html>
